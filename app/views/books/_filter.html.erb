@@ -1,0 +1,26 @@
+<div class='m-3'>
+  <%= form_tag books_path, method: :get, remote: true, class: 'd-flex', id: 'filter_form' do %>
+
+    <div class='row'>
+      <div class='col-md-3'>
+        <%= label_tag :min_price, "Minimum price:" %>
+        <%= text_field_tag :min_price, params[:min_price] %>
+      </div>
+      <div class='col-md-3'>
+        <%= label_tag :max_price, "Maximum price:" %>
+        <%= text_field_tag :max_price, params[:max_price] %>
+      </div>
+      <div class='col-md-2'>
+        <%= label_tag :level, "Level" %>
+        <%= select_tag :level, options_for_select(Book.levels.map {|k, v| [k.humanize.capitalize, k]}, params[:level]), class: "form-control" %>
+      </div>
+      <div class='col-md-2'>
+        <%= label_tag :author_name, "Author Name" %>
+        <%= text_field_tag :author_name, params[:author_name] %>
+      </div>
+      <div class='col-md-2'>
+        <%= submit_tag "Filter", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

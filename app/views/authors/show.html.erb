@@ -1,0 +1,27 @@
+<h4>Author Details</h4>
+First name: <%= @author.first_name %><br>
+Last name: <%= @author.last_name %><br>
+Date of birth: <%= @author.date_of_birth %><br>
+
+<h4>Book Details</h4>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Level</th>
+  </tr>
+  <% if @author.books.any? %>
+    <% @author.books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.price %></td>
+        <td><%= book.level %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan='4'>No data</td>
+    </tr>
+  <% end %>
+</table>

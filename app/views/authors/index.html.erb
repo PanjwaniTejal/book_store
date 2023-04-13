@@ -1,0 +1,25 @@
+<div class='d-flex'>
+  <h3>Listing Of Authors</h3>
+  <%= link_to 'Create Author', new_author_path, class: 'ml-3 p-2' %>
+</div>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Date of birth</th>
+    <th>Actions</th>
+  </tr>
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.first_name %></td>
+      <td><%= author.last_name %></td>
+      <td><%= author.date_of_birth %></td>
+      <td> 
+        <%= link_to 'Show'  , author_path(author) %>
+        <%= link_to 'Edit'  , edit_author_path(author) %>
+        <%= link_to 'Delete', author_path(author), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,10 @@
+<div>
+  <h4 class='text-center'>Edit Book Details</h4>
+  <div class="card">
+    <div class="container">
+      <%= form_with(model: @book, url: book_path(@book), id: 'book_form') do |form| %>
+        <%= render partial: 'form', locals: { form: form } %>
+      <% end %>
+    </div>
+  </div>
+</div>

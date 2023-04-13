@@ -1,0 +1,39 @@
+<div class='row'>
+  <div class='col-md-1'>
+    <%= form.label :title %>
+  </div>
+  <div class='col-md-11'>
+    <%= form.text_field :title %>
+  </div>
+</div>
+<div class='row mt-2'>
+  <div class='col-md-1'>
+    <%= form.label :price %>
+  </div>
+  <div class='col-md-11'>
+    <%= form.number_field :price %>
+  </div>
+</div>
+<div class='row mt-2'>
+  <div class='col-md-1'>
+    <%= form.label :level %>
+  </div>
+  <div class='col-md-11'>
+    <%= form.select :level, options_for_select(Book.levels.map {|k, v| [k.humanize.capitalize, k]}) %>
+  </div>
+</div>
+
+<div class='row mt-2'>
+  <div class='col-md-1'>
+    <%= label_tag :author %>
+  </div>
+  <div class='col-md-11'>
+    <%= select_tag 'author_ids[]', options_for_select(Author.all.map {|k| [k.full_name, k.id]}, @book.authors.pluck(:id)), multiple: true, class: 'select2' %>
+  </div>
+</div>
+
+<div class='row mt-2'>
+  <div class='col-md-12'>
+    <%= form.submit %>
+  </div>
+</div>

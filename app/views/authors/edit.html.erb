@@ -1,0 +1,11 @@
+<div>
+  <h4 class='text-center'> Edit Author Details </h4>
+
+  <div class="card">
+    <div class="container">
+      <%= form_with(model: @author, url: author_path(@author), id: 'author_form') do |form| %>
+        <%= render partial: 'form', locals: { form: form } %>
+      <% end %>
+    </div>
+  </div>
+</div>
