@@ -3,7 +3,8 @@
   <%= link_to 'Create Book', new_book_path, class: 'ml-3 p-2' %>
 </div>
 
-<%= render 'filter' %>
+<%#= render 'filter' %>
+<%= react_component 'SearchPage' %>
 
 <div id='book_listing'>
   <%= render partial: 'listing', locals: {books: @books} %>

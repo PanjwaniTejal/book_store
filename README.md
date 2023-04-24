@@ -111,8 +111,11 @@ It will return the author's details and all the books that the author has writte
 Add a ReactJS filter in the book listing page with price, level, and author name.
 
 
-
-
-
-
-
+# Integration on react on rails for search functionality
+yarn add react react-dom
+rails webpacker:install:react
+gem 'react-rails'
+bundle
+rails generate react:install
+rails generate react:component SeachPage
+rails s

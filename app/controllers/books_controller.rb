@@ -1,14 +1,9 @@
 class BooksController < ApplicationController
+  protect_from_forgery except: :search
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.all
-
-    if params[:min_price].present? && params[:max_price].present?
-      @books = @books.where(price: params[:min_price]..params[:max_price])
-    end
-    @books = @books.where(level: params[:level]) if params[:level].present?
-    @books = @books.joins(:authors).where("authors.first_name LIKE ?", "%#{params[:author_name]}%").uniq if params[:author_name].present?
   end
 
   def new
@@ -47,6 +42,15 @@ class BooksController < ApplicationController
   def search
     @books = Book.all
 
+    if params[:min_price].present? && params[:max_price].present?
+      @books = @books.where(price: params[:min_price]..params[:max_price])
+    end
+    @books = @books.where(level: params[:level]) if params[:level].present?
+    @books = @books.joins(:authors).where("authors.first_name LIKE ?", "%#{params[:author_name]}%").uniq if params[:author_name].present?
+
+    respond_to do |format|
+      format.js
+    end
   end
   
   private 
